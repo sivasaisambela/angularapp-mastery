@@ -1,0 +1,11 @@
+<h3>My Tasks</h3>
+
+<div *ngIf="tasks.length===0">No tasks yet. Add one !</div>
+
+<div *ngFor="let task of tasks;trackBy:trackByTaskId" [class.completed]="task.completed">
+    <span>{{task.title}}</span>&nbsp;&nbsp;
+    <button (click)="toggleComplete(task)">
+        {{task.completed ? 'Do It':'Complete'}}
+    </button>
+
+</div>

@@ -1,0 +1,10 @@
+<div *ngIf="products.length===0">
+No products available.
+</div>
+
+<div *ngFor="let product of products;trackBy:trackByProductId" class="product-card">
+    <span>{{product.name}}- ${{product.price}}</span>&nbsp;&nbsp;
+    <button (click)="onAddToCart(product)" [disabled]="!product.inStock">
+        {{product.inStock?'Add to Cart':'Out of Stock'}}
+    </button>
+</div>

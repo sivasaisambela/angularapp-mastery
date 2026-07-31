@@ -1,0 +1,7 @@
+<h3>Products</h3>
+
+<app-search-bar [placeholder]="'Search products...'" (search)="handleSearch($event)"></app-search-bar>
+<br>
+<app-product-list [products]="products()" (addToCart)="handleAddToCart($event)"></app-product-list>
+
+<h4>Cart Items: {{ cart().length }}</h4>

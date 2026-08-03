@@ -1,0 +1,9 @@
+@if (product(); as p) {
+  <img [src]="p.image" [alt]="p.title" style="max-width: 300px; display: block;" />
+  <h2>{{ p.title }}</h2>
+  <p>{{ p.category }}</p>
+  <p><strong>${{ p.price }}</strong></p>
+  <p>{{ p.description }}</p>
+} @else {
+  <p>Loading product...</p>
+}

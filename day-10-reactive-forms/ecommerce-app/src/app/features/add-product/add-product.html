@@ -1,0 +1,48 @@
+<h3>Add a New Product</h3>
+<p class="success" *ngIf="showSuccess()">✅ Product added successfully!</p>
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-field">
+        <label for="name">Product Name</label>
+        <input id="name"  type="text" formControlName="name">
+        <p class="error" *ngIf="productForm.get('name')?.invalid&&productForm.get('name')?.touched">
+            Name is required (min 3 characters).
+        </p>
+    </div>
+
+     <div class="form-field">
+    <label for="image">Image URL</label>
+    <input id="image" type="text" formControlName="image" placeholder="https://..." />
+    <p class="error" *ngIf="productForm.get('image')?.invalid && productForm.get('image')?.touched">
+      A valid image URL is required.
+    </p>
+  </div>
+
+    <div class="form-field">    
+        <label for="price">Price</label>
+        <input id="price" type="number" formControlName="price">
+
+        <p class="error" *ngIf="productForm.get('price')?.invalid&& productForm.get('price')?.touched">
+            Price must be at least 1.
+        </p>
+    </div>
+
+    <div class="form-field">
+    <label for="category">Category</label>
+    <input id="category" type="text" formControlName="category" />
+
+    <p class="error" *ngIf="productForm.get('category')?.invalid && productForm.get('category')?.touched">
+      Category is required.
+    </p>    
+    </div>
+
+    <div class="form-field">
+    <label for="description">Description</label>
+    <textarea id="description" formControlName="description" rows="4"></textarea>
+    <p class="error" *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched">
+      Description is required (min 10 characters).
+    </p> 
+   </div>
+
+ <button type="submit" [disabled]="productForm.invalid">Add Product</button>
+</form>

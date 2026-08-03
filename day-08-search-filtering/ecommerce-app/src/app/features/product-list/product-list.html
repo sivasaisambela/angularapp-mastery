@@ -1,0 +1,21 @@
+<!-- Products Grid (shows if products are available) -->
+<div class="products-grid" *ngIf="products && products.length > 0; else noProducts">
+  <div class="product-card" *ngFor="let product of products">
+    <img [src]="product.image" [alt]="product.title" class="product-image" />
+    <div class="product-info">
+      <h3 class="product-title" [title]="product.title">{{ product.title }}</h3>
+      <p class="product-category">{{ product.category }}</p>
+      <p class="product-price">{{ product.price | currency }}</p>
+      
+      <!-- When clicked, triggers the child's method -->
+      <button class="btn-add" (click)="onAddToCart(product)">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<!-- Fallback if the parent passes an empty array -->
+<ng-template #noProducts>
+  <div class="no-products-alert">
+    <p>No products available.</p>
+  </div>
+</ng-template>
